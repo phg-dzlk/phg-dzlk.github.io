@@ -3,7 +3,4 @@
 + Показать, как работает Git
 + Познакомиться с основными командами
 
-```bash
-git clone git@github...
-```
-
+[click me](https://dzemiachkovskii.github.io)
