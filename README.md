@@ -3,4 +3,4 @@
 + Показать, как работает Git
 + Познакомиться с основными командами
 
-[click me](https://dzemiachkovskii.github.io)
+[*Go to website*](https://dzemiachkovskii.github.io)
