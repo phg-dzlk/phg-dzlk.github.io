@@ -1,4 +1,5 @@
-<pre style="background-color:black;letter-spacing:-8;line-height:1"><a href="https://dzemiachkovskii.github.io/" target="_blank">
+<!DOCTYPE html>
+<pre style="background-color:black;letter-spacing:-0.4em;line-height:1"><a href="https://dzemiachkovskii.github.io/" target="_blank">
 ⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬜⬛⬜⬜⬛⬛⬛⬛⬛⬛⬛
 ⬛⬜⬜⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬛⬛⬛⬜⬛⬜⬛⬜⬜⬛⬜⬜⬜⬜⬜⬛
 ⬛⬜⬛⬛⬛⬜⬛⬜⬜⬜⬜⬜⬛⬛⬜⬛⬜⬛⬛⬛⬛⬜⬛⬜⬛⬛⬛⬜⬛
