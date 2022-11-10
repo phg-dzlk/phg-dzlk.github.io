@@ -1,3 +1,2 @@
-# Сайт находится на стадии разработки (в данный момент разрабатывается его идея в целом), возвращайтесь позже.
-
-[*Go to ***website****](https://dzemiachkovskii.github.io)
+<img src="sources/frame.png" />
+<p><a href="https://dzemiachkovskii.github.io/">Сайт</a></p>
