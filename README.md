@@ -1,4 +1,4 @@
-<pre style="background-color:black;letter-spacing:-4;line-height:1"><a href="https://dzemiachkovskii.github.io/" target="_blank">
+<pre style="background-color:black;letter-spacing:-8;line-height:1"><a href="https://dzemiachkovskii.github.io/" target="_blank">
 ⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬜⬛⬜⬜⬛⬛⬛⬛⬛⬛⬛
 ⬛⬜⬜⬜⬜⬜⬛⬜⬛⬜⬛⬜⬜⬛⬛⬛⬜⬛⬜⬛⬜⬜⬛⬜⬜⬜⬜⬜⬛
 ⬛⬜⬛⬛⬛⬜⬛⬜⬜⬜⬜⬜⬛⬛⬜⬛⬜⬛⬛⬛⬛⬜⬛⬜⬛⬛⬛⬜⬛
