@@ -2,6 +2,8 @@
 <html lang="ru">
   <head>
     <style>
+      .elements { text-align: left; margin-left: 21%; }
+      table { margin-left: auto; margin-right: auto; text-align: center; }
       .projs { padding-left: 20px; padding-right: 20px; }
       .certifs { max-width: 40vw; height: auto; }
     </style>
@@ -9,15 +11,14 @@
     <title>Резюме</title>
   </head>
   <body style="background-color:#eeffe8">
-    <center>
-      <h1 id="name" style="text-align:left;margin-left:42%">Земячковский<br />Дмитрий<br />Александрович</h1>
-      <img src="resources\Me.png" border="3" width="167" height="219" alt="Ваш браузер не поддерживает тэг html <img />" />
-      <p>
+      <h1 id="name" class="elements">Земячковский<br />Дмитрий<br />Александрович</h1>
+      <img class="elements" src="resources\Me.png" border="3" width="167" height="219" alt="Ваш браузер не поддерживает тэг html <img />" />
+      <p class="elements">
         Студент 2 курса Колледжа Связи №54 им. П. М. Вострухина
       </p>
       <hr />
       <details>
-        <summary>Проекты</summary>
+        <summary class="elements">Проекты</summary>
         <table border="2px" style="width:60%;background:#d4d4d4">
           <tbody>
             <tr>
@@ -44,7 +45,7 @@
         </table>
       </details>
       <details>
-        <summary>Сертификаты</summary>
+        <summary class="elements">Сертификаты</summary>
         <table border="2px" style="width:60%;background:#d4d4d4">
           <tbody>
             <tr>
@@ -60,7 +61,25 @@
               <td><a href="https://www.sololearn.com/certificates/CT-1PQ5FQTI"><img class="certifs" src="https://api2.sololearn.com/v2/certificates/CT-1PQ5FQTI/image/png" alt="JS Sololearn course" /></a></td>
             </tr>
           </tbody>
+        </table>
       </details>
-    </center>
+      <details>
+        <summary class="elements">Навыки</summary>
+        <ul class="elements">
+          <li><p>Пусто!</p></li>
+          <li><p>Если б звёзды были пчёлами, то они бы нипочём</p></li>
+          <li><p>Никогда б и не подумали так высоко строить</p></li>
+          <li><p>ДОООООООООООООООООООООМ</p></li>
+        </ul>
+      </details>
+      <details>
+        <summary class="elements">Чота ещё</summary>
+        <ul class="elements">
+          <li><p>a</p></li>
+          <li><p>6</p></li>
+          <li><p>B</p></li>
+          <li><p>7</p></li>
+        </ul>
+      </details>
   </body>
 </html>
