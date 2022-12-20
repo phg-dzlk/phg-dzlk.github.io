@@ -84,11 +84,11 @@ window.onload = function() {
     function drawObstacles() {
         if (!cactus) {
             cactus = !cactus;
-            cactusX = 800 + (Math.random() * 1000);
+            cactusX = 610;
             cactusHeight = Math.round(Math.random() * 69 + 30);
         }
         else {
-            if (cactusX < -100) cactus = !cactus;
+            if (cactusX < -35) cactus = !cactus;
             else cactusX -= gameSpeed * 2 + 4;
         }
         ctx.beginPath();

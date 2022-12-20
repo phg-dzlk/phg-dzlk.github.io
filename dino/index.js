@@ -19,6 +19,9 @@ window.onload = function() {
     window.ontouchstart = function() {
         if (y >= grndHeight - sy) dy = -350;
     }
+    window.onclick = function() {
+        if (y >= grndHeight - sy) dy = -350;
+    }
     function mainLoop() {
         var tPassed = (Date.now() - t) / 1000;
         t = Date.now();
