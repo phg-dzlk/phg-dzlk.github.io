@@ -96,9 +96,14 @@ window.onload = function() {
         ctx.rect(cactusX, cactusY - cactusHeight, 25, cactusHeight);
         ctx.fill();
         ctx.beginPath();
-        ctx.fillStyle = "00ff00";
-        upperPipe = cactusY - cactusHeight - (sy * 5);
+        ctx.rect(cactusX - 4, cactusY - cactusHeight, 33, 15);
+        ctx.fill();
+        ctx.beginPath();
+        upperPipe = cactusY - cactusHeight - (sy * 4);
         ctx.rect(cactusX, upperPipe, 25, -500);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.rect(cactusX - 4, upperPipe, 33, -15);
         ctx.fill();
     }
     function collisionCheck() {
