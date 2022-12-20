@@ -81,7 +81,7 @@ window.onload = function() {
         if (!cactus) {
             cactus = !cactus;
             cactusX = 800 + (Math.random() * 1000);
-            cactusHeight = Math.round(Math.random() * 30 + 30);
+            cactusHeight = Math.round(Math.random() * 69 + 30);
         }
         else {
             if (cactusX < -100) cactus = !cactus;
@@ -93,7 +93,7 @@ window.onload = function() {
         ctx.fill();
         ctx.beginPath();
         ctx.fillStyle = "00ff00";
-        upperPipe = cactusY - (sy * 5);
+        upperPipe = cactusY - cactusHeight - (sy * 5);
         ctx.rect(cactusX, upperPipe, 25, -500);
         ctx.fill();
     }
