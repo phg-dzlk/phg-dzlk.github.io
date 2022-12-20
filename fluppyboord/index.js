@@ -25,6 +25,10 @@ window.onload = function() {
         dy = -350;
         oldHeight = y;
     }
+    window.onclick = function() {
+        dy = -350;
+        oldHeight = y;
+    }
     function mainLoop() {
         var tPassed = (Date.now() - t) / 1000;
         t = Date.now();
