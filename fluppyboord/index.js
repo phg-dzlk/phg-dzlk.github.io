@@ -17,6 +17,7 @@ window.onload = function() {
     var oldHeight = 0;
     var bird = document.getElementById("bird");
     /* zashk */ var upperPipe = 0;
+    var ptsTimer = 0;
     window.onkeydown = function() {
         dy = -350;
         oldHeight = y;
@@ -44,7 +45,6 @@ window.onload = function() {
         else if (y <= oldHeight - 50) dy = 200;
         ctx.clearRect(0, 0, 600, 400);
         drawPts();
-        pts += tPassed;
         if (pts / 20 >= gameSpeed) gameSpeed += 1;
         drawHighscore();
         drawBG();
@@ -113,6 +113,12 @@ window.onload = function() {
                 pts = 0;
                 gameSpeed = 1;
                 if (score > highscore) highscore = score;
+            }
+            else {
+                if (Date.now() - ptsTimer > 300 / gameSpeed) {
+                    ptsTimer = Date.now();
+                    pts += 1;
+                }
             }
         }
     }
