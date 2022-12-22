@@ -1,0 +1,23 @@
+#canvas {
+    width: 75vw;
+    height: auto;
+    background-color: rgb(0, 200, 255);
+    padding: 0;
+    margin: auto;
+    display: block;
+}
+#header {
+    text-align: center;
+    font-size: 2vw;
+}
+audio {
+    display: none;
+}
+#bird {
+    display: none;
+}
+#hint {
+    text-align: left;
+    margin-left: 21vw;
+    font-size: 2vw;
+}

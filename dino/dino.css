@@ -1,7 +1,10 @@
 #canvas {
-    width: 40%;
+    width: 75vw;
     height: auto;
-    background-color: black;
+    background-color: white;
+    padding: 0;
+    margin: auto;
+    display: block;
 }
 #header {
     text-align: center;
@@ -13,5 +16,8 @@ audio {
 #hint {
     text-align: left;
     margin-left: 21vw;
-    font-size: 1vw;
+    font-size: 2vw;
+}
+#dinoPic {
+    display: none;
 }

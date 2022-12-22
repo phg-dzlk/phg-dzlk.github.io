@@ -1,176 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-  <style>
-    #photo {
-      float: left;
-    }
+  <head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="utf-8">
+    <title>Резюме</title>
+  </head>
 
-    #name {
-      margin-left: 200px;
-      line-height: 1.5;
-    }
-
-    .elements {
-      text-align: left;
-      margin-left: 21%;
-    }
-
-    table {
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    .projs {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-    .certifs {
-      max-width: 40vw;
-      height: auto;
-    }
-
-    .details_list {
-      line-height: 150%;
-    }
-  </style>
-  <meta charset="utf-8">
-  <title>Резюме</title>
-</head>
-
-<body style="background-color:#eeffe8">
-  <div class="elements" style="height: 240px;">
-    <img id="photo" src="resources\Me.png" border="3" width="167px" height="219px"
-      alt="Ваш браузер не поддерживает тэг html <img />" />
-    <h1 id="name">Земячковский<br />Дмитрий<br />Александрович</h1>
-  </div>
-  <div>
-    <p class="elements">
-      Студент 2 курса <a href="dino/index.html" style="color:#424242; text-decoration: none;">Колледжа Связи №54</a> им. П. М. <a href="fluppyboord/index.html" style="color:#424242; text-decoration: none;">Вострухина</a>
-    </p>
-    <hr />
-  </div>
-  <div>
-    <details class="details_list">
-      <summary class="elements"><b>Проекты</b></summary>
-      <table border="2px" style="width:60%;background:#d4d4d4">
-        <tbody>
-          <tr>
-            <th class="projs">
-              <p>Название</p>
-            </th>
-            <th class="projs">
-              <p>Описание</p>
-            </th>
-            <th class="projs">
-              <p>ЯП</p>
-            </th>
-          </tr>
-          <tr>
-            <td class="projs">
-              <p><a href="https://github.com/dzemiachkovskii/wishlist-manager-bot" target="_blank">Вишлист менеджер</a>
-              </p>
-            </td>
-            <td class="projs">
-              <p>Телеграм-бот, позволяющий создавать списки желаний, изменять их, просматривать чужие списки желаний и
-                "бронировать" желания других людей<br /><a href="https://t.me/wishlist_manager_bot" target="_blank">Профиль бота в
-                  телеграме</a></p>
-            </td>
-            <td class="projs">
-              <p>Python</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="projs">
-              <p><a href="https://github.com/dzemiachkovskii/quotter-phgdzlk-bot" target="_blank">Генератор цитат</a>
-              </p>
-            </td>
-            <td class="projs">
-              <p>Телеграм-бот, создающий изображение с цитатой из полученного текста<br /><a
-                  href="https://t.me/PhgDzlkQuoteBot" target="_blank">Профиль бота в телеграме</a></p>
-            </td>
-            <td class="projs">
-              <p>Python</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="projs">
-              <p><a href="https://github.com/dzemiachkovskii/SystemProgTasks" target="_blank">Небольшие программы</a>
-              </p>
-            </td>
-            <td class="projs">
-              <p>Практические задания по предмету "Системное программирование"</p>
-            </td>
-            <td class="projs">
-              <p>C++</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </details>
-    <details class="details_list">
-      <summary class="elements"><b>Навыки</b></summary>
-      <ul class="elements">
-        <li>
-          <p>Знание английского языка</p>
-        </li>
-        <li>
-          <p>Навыки работы с JSON</p>
-        </li>
-        <li>
-          <p>Навыки работы с <b><i><span title="Имеется небольшой опыт работы с Kudago API">Web API</span></i></b></p>
-        </li>
-      </ul>
-    </details>
-    <details class="details_list">
-      <summary class="elements"><b>Сертификаты</b></summary>
-      <table border="2px" style="width:60%;background:#d4d4d4">
-        <tbody>
-          <tr>
-            <td><a href="https://www.sololearn.com/certificates/CT-9YCWFZTB"><img class="certifs"
-                  src="https://api2.sololearn.com/v2/certificates/CT-9YCWFZTB/image/png" alt="Java Sololearn course"
-                  style="width:40vw;height:auto;" /></a></td>
-            <td><a href="https://www.sololearn.com/certificates/CT-VUFGSGII"><img class="certifs"
-                  src="https://api2.sololearn.com/v2/certificates/CT-VUFGSGII/image/png" alt="Kotlin Sololearn course"
-                  style="width:40vw;height:auto;" /></a></td>
-          </tr>
-          <tr>
-            <td><a href="https://www.sololearn.com/certificates/CT-DPPJLVIG"><img class="certifs"
-                  src="https://api2.sololearn.com/v2/certificates/CT-DPPJLVIG/image/png"
-                  alt="SQL Sololearn course" /></a>
-            </td>
-            <td><a href="https://www.sololearn.com/certificates/CT-FQDIBZBJ"><img class="certifs"
-                  src="https://api2.sololearn.com/v2/certificates/CT-FQDIBZBJ/image/png"
-                  alt="Python Sololearn course" /></a></td>
-          </tr>
-          <tr>
-            <td><a href="https://www.sololearn.com/certificates/CT-WW0QXRLR"><img class="certifs"
-                  src="https://api2.sololearn.com/v2/certificates/CT-WW0QXRLR/image/png"
-                  alt="HTML Sololearn course" /></a></td>
-            <td><a href="https://www.sololearn.com/certificates/CT-1PQ5FQTI"><img class="certifs"
-                  src="https://api2.sololearn.com/v2/certificates/CT-1PQ5FQTI/image/png"
-                  alt="JS Sololearn course" /></a>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="https://www.sololearn.com/certificates/CT-TBFBM0GF"><img class="certifs"
-                  src="https://www.sololearn.com/Certificate/1140-23712546/jpg"
-                  alt="JS GameDev course" /></a></td>
-          </tr>
-        </tbody>
-      </table>
-    </details>
-    <pre>
-
-
-
-
-
-    </pre>
-  </div>
-</body>
+  <body>
+    <pre class="header">
+    ▄████  ▄▄▄       ███▄ ▄███▓▓█████   ██████ 
+    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀ ▒██    ▒ 
+   ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███   ░ ▓██▄   
+   ░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄   ▒   ██▒
+   ░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒▒██████▒▒
+    ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░▒ ▒▓▒ ▒ ░
+     ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░░ ░▒  ░ ░
+   ░ ░   ░   ░   ▒   ░      ░      ░   ░  ░  ░  
+         ░       ░  ░       ░      ░  ░      ░     
+  </pre>
+  <br><hr><hr><hr><br>
+    <a href="dino/dino.html"><img class="linkPic" src="dino/resources/dino.png"></a>
+    <br>
+    <a href="fluppyboord/fluppyboord.html"><img class="linkPic"
+        src="fluppyboord/resources/bird.png"></a>
+  </body>
 
 </html>
