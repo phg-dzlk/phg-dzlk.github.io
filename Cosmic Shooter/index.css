@@ -1,0 +1,136 @@
+body {
+    background-image: url(resources/images/arcade_machine_bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    user-select: none;
+}
+
+p {
+    font-size: 1vw;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+}
+
+.back_button {
+    z-index: 4;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 10vw;
+}
+
+#toggle_music {
+    z-index: 4;
+    position: absolute;
+    top: 4.8%;
+    left: 82%;
+}
+
+#toggle_music_img {
+    width: 5vw;
+}
+
+#toggle_sound {
+    z-index: 4;
+    position: absolute;
+    top: 5%;
+    left: 90%;
+}
+
+#toggle_sound_img {
+    width: 5vw;
+}
+
+#screen {
+    width: 54vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 11.5%;
+}
+
+#canvas {
+    width: 35vw;
+    background-color: #000000;
+    border-radius: 4%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#joystick {
+    z-index: 2;
+    width: 6.5%;
+    position: absolute;
+    top: 62.5%;
+    left: 34.4%;
+    transition: transform 0.2s;
+    transform-origin: 50% 100%;
+}
+
+#button_fire {
+    z-index: 2;
+    width: 3.5%;
+    height: 3%;
+    position: absolute;
+    top: 86.6%;
+    left: 53.6%;
+    transition: transform 0.1s;
+
+    background-image: url(resources/images/green_button.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#button_fire_mask {
+    z-index: 3;
+    width: 3.5%;
+    height: 3%;
+    position: absolute;
+    top: 88.9%;
+    left: 53.5%;
+
+    background-image: url(resources/images/button_mask.png);
+    block-size: cover;
+    background-position: center;
+    background-size: 5.2vw;
+}
+
+#button_down {
+    z-index: 2;
+    width: 3.5%;
+    height: 3%;
+    position: absolute;
+    top: 86.6%;
+    left: 60.4%;
+    transition: transform 0.1s;
+
+    background-image: url(resources/images/orange_button.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#button_down_mask {
+    z-index: 3;
+    width: 3.5%;
+    height: 3%;
+    position: absolute;
+    top: 88.9%;
+    left: 60.4%;
+
+    background-image: url(resources/images/button_mask.png);
+    block-size: cover;
+    background-position: center;
+    background-size: 5.2vw;
+}
+
+#links {
+    position: absolute;
+    left: 82%;
+    top: 88%;
+}

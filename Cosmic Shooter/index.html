@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cosmic shooter</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <audio autoplay loop id="bg_theme">
+        <source src="resources/sounds/bg_theme.mp3" type="audio/mp3">
+    </audio>
+    <audio autoplay loop id="thruster_ambient">
+        <source src="resources/sounds/thruster_ambient.mp3" type="audio/mp3">
+    </audio>
+</head>
+
+<body>
+    <div id="screen">
+        <canvas id="canvas" width="600" height="400">
+            Your browser doesn't supprot the HTML5 Canvas tag.
+        </canvas>
+        <span>
+            <img id="joystick" src="resources/images/joystick.png" alt="joystick img" draggable="false" />
+            <div id="button_down"></div>
+            <div id="button_down_mask"></div>
+
+            <div id="button_fire"></div>
+            <div id="button_fire_mask"></div>
+        </span>
+    </div>
+    <div id="links">
+        <p>my <a href="https://github.com/phg-dzlk" draggable="false">GitHub account</a></p>
+        <p>all sounds from <a href="https://freesound.org/" draggable="false">freesound.org</a></p>
+    </div>
+    <a class="back_button" href="../index.html" draggable="false"><img class="back_button"
+            src="resources/images/back_button.png" alt="back_button" draggable="false" /></a>
+    <button id="toggle_music" onclick="switchMusic()"><img id="toggle_music_img" src="resources/images/music_on.png"
+            alt="music_on" draggable="false" /></button>
+    <button id="toggle_sound" onclick="switchSound()"><img id="toggle_sound_img" src="resources/images/sound_on.png"
+            alt="toggle_sound" draggable="false" />
+    </button>
+</body>
+
+</html>
