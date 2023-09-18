@@ -520,7 +520,7 @@ function update(timePassed, speed) {
         bullet[1] = ny;
     }
 
-    if (collisionСheck()) {
+    if (collisionCheck()) {
         replaceEvil();
         score++;
         sHit.play();
@@ -544,7 +544,7 @@ function rotate(cx, cy, x, y, angle) {
     return [nx, ny];
 }
 
-function collisionСheck() {
+function collisionCheck() {
     let bulletsArray = bullets.getAsArray();
     for (let i = 0; i < bulletsArray.length; i++) {
         let bullet = bulletsArray[i];
