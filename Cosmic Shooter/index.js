@@ -57,7 +57,7 @@ class LinkedList {
 }
 
 class Sound {
-    constructor(src, volume = 1) {
+    constructor(src, volume = 1, toggleOff = false) {
         this.sound = document.createElement("audio");
         this.sound.src = src;
         this.sound.setAttribute("preload", "auto");
@@ -65,7 +65,7 @@ class Sound {
         this.sound.style.display = "none";
         this.sound.volume = volume;
         this.available = true;
-        this.toggleOff = false;
+        this.toggleOff = toggleOff;
         document.head.appendChild(this.sound);
         this.play = function () {
             if (this.available && !this.toggleOff) {
@@ -109,6 +109,7 @@ const bullets = new LinkedList();
 
 const evil = [300, -100]; // just a regular bad & evil creature which of course you can find anywhere in space
 
+playState = false;
 currentGunIsLeft = true;
 gunCooldown = 0;
 evilSpeed = 60;
@@ -117,16 +118,16 @@ score = 0;
 
 // sounds initialization
 // // SFX
-sounds = [
-    sJoystickPull = new Sound("resources/sounds/joystick_pull.mp3"),
-    sJoystickRelease = new Sound("resources/sounds/joystick_release.mp3"),
-    sButtonPush = new Sound("resources/sounds/button_push.mp3"),
-    sButtonRelease = new Sound("resources/sounds/button_release.mp3"),
-    sResetYaw = new Sound("resources/sounds/reset_yaw.mp3", 0.4),
-    sFire = new Sound("resources/sounds/fire.mp3", 0.4),
-    sHit = new Sound("resources/sounds/hit.mp3", 0.6),
-    sDeath = new Sound("resources/sounds/death.mp3", 0.6),
-    sTenKills = new Sound("resources/sounds/ten_kills.mp3", 0.6)
+sJoystickPull = new Sound("resources/sounds/joystick_pull.mp3");
+sJoystickRelease = new Sound("resources/sounds/joystick_release.mp3");
+sButtonPush = new Sound("resources/sounds/button_push.mp3");
+sButtonRelease = new Sound("resources/sounds/button_release.mp3");
+gameSounds = [
+    sResetYaw = new Sound("resources/sounds/reset_yaw.mp3", volume = 0.4, toggleOff = true),
+    sFire = new Sound("resources/sounds/fire.mp3", volume = 0.4, toggleOff = true),
+    sHit = new Sound("resources/sounds/hit.mp3", volume = 0.6, toggleOff = true),
+    sDeath = new Sound("resources/sounds/death.mp3", volume = 0.6, toggleOff = true),
+    sTenKills = new Sound("resources/sounds/ten_kills.mp3", volume = 0.6, toggleOff = true)
 ];
 
 musicOn = true;
@@ -149,6 +150,16 @@ function rotateShip(angle) {
 }
 
 function fire() {
+    // starting the game here bc I'm the dumbass shitcode god
+    if (!playState) {
+        playState = !playState;
+        document.getElementById("bg_theme").play();
+        document.getElementById("thruster_ambient").play();
+        for (let i = 0; i < gameSounds.length; i++) {
+            gameSounds[i].toggleOff = false;
+        }
+        return
+    }
     bx = 0;
     by = 315
     if (currentGunIsLeft) {
@@ -175,6 +186,14 @@ function resetYaw() {
 // ========|
 // DRAWING |
 // ========|
+
+function drawStartHint(context) {
+    context.font = "30px Arial";
+    context.fillStyle = colors["Red"];
+    context.fillText("Press fire (up)\nto start the game", 56, 204);
+    context.fillStyle = colors["Yellow"];
+    context.fillText("Press fire (up)\nto start the game", 50, 200);
+}
 
 function drawShip(context) {
     // arm
@@ -324,7 +343,7 @@ function drawStars(context) {
     }
 }
 
-function drawEvil(context, timePassed) {
+function drawEvil(context) {
     x = evil[0];
     y = evil[1];
     context.fillStyle = colors["Purple"];
@@ -439,11 +458,53 @@ function drawScore(context) {
     context.fillText(msg, 20, 30);
 }
 
+function draw(context) {
+    context.clearRect(0, 0, 600, 400);
+    switch (playState) {
+        case false:
+            drawStars(context);
+            drawStartHint(context);
+            break;
+        case true:
+            drawStars(context);
+            drawShip(context);
+            drawBullets(context);
+            drawEvil(context);
+            drawArrow(context);
+            drawScore(context);
+            break;
+    }
+}
+
 // =======|
 // UPDATE |
 // =======|
 
 function update(timePassed, speed) {
+    if (!playState) {
+        for (let i = 0; i < stars.length; i++) {
+            star = stars[i];
+            x = star[0]
+            y = star[1] + timePassed * speed;
+
+            randomShift = Math.random() * 0.20 - 0.10;
+            if (x > 610) {
+                x = -5;
+            } else if (x < -10) {
+                x = 605;
+            }
+            if (y > 410) {
+                y = -5;
+            } else if (y < -10) {
+                y = 405;
+            }
+
+            star[0] = x + randomShift;
+            star[1] = y + randomShift;
+        }
+        return
+    }
+
     shipX = 300;
     shipY = 320;
 
@@ -601,14 +662,14 @@ function switchSound() {
     soundIcon = document.getElementById("toggle_sound_img");
     if (soundOn) {
         thruster.pause();
-        for (let i = 0; i < sounds.length; i++) {
-            sounds[i].toggleOff = true;
+        for (let i = 0; i < gameSounds.length; i++) {
+            gameSounds[i].toggleOff = true;
         }
         soundIcon.src = "resources/images/sound_off.png";
     } else {
         thruster.play();
-        for (let i = 0; i < sounds.length; i++) {
-            sounds[i].toggleOff = false;
+        for (let i = 0; i < gameSounds.length; i++) {
+            gameSounds[i].toggleOff = false;
         }
         soundIcon.src = "resources/images/sound_on.png";
     }
@@ -641,24 +702,17 @@ window.onload = function () {
     var t = Date.now();
     let speed = 50;
 
-    function draw() {
+    function gameLoop() {
         var timePassed = (Date.now() - t) / 1000;
         t = Date.now();
 
         update(timePassed, speed);
+        draw(context);
 
-        context.clearRect(0, 0, 600, 400);
-        drawStars(context);
-        drawShip(context);
-        drawBullets(context);
-        drawEvil(context, timePassed);
-        drawArrow(context);
-        drawScore(context);
-
-        window.requestAnimationFrame(draw);
+        window.requestAnimationFrame(gameLoop);
     }
 
-    draw();
+    gameLoop();
 }
 
 /*
