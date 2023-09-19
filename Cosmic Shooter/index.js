@@ -57,17 +57,18 @@ class LinkedList {
 }
 
 class Sound {
-    constructor(src) {
+    constructor(src, volume = 1) {
         this.sound = document.createElement("audio");
         this.sound.src = src;
         this.sound.setAttribute("preload", "auto");
         this.sound.setAttribute("controls", "none");
         this.sound.style.display = "none";
-        this.avaliable = true;
+        this.sound.volume = volume;
+        this.available = true;
         this.toggleOff = false;
         document.head.appendChild(this.sound);
         this.play = function () {
-            if (this.avaliable && !this.toggleOff) {
+            if (this.available && !this.toggleOff) {
                 this.sound.play();
             }
         };
@@ -109,7 +110,7 @@ const bullets = new LinkedList();
 const evil = [300, -100]; // just a regular bad & evil creature which of course you can find anywhere in space
 
 currentGunIsLeft = true;
-gunIsFiring = 0;
+gunCooldown = 0;
 evilSpeed = 60;
 curAngle = 15;
 score = 0;
@@ -121,18 +122,18 @@ sounds = [
     sJoystickRelease = new Sound("resources/sounds/joystick_release.mp3"),
     sButtonPush = new Sound("resources/sounds/button_push.mp3"),
     sButtonRelease = new Sound("resources/sounds/button_release.mp3"),
-    sResetYaw = new Sound("resources/sounds/reset_yaw.mp3"),
-    sFire = new Sound("resources/sounds/fire.mp3"),
-    sHit = new Sound("resources/sounds/hit.mp3"),
-    sDeath = new Sound("resources/sounds/death.mp3"),
-    sTenKills = new Sound("resources/sounds/ten_kills.mp3")
+    sResetYaw = new Sound("resources/sounds/reset_yaw.mp3", 0.4),
+    sFire = new Sound("resources/sounds/fire.mp3", 0.4),
+    sHit = new Sound("resources/sounds/hit.mp3", 0.6),
+    sDeath = new Sound("resources/sounds/death.mp3", 0.6),
+    sTenKills = new Sound("resources/sounds/ten_kills.mp3", 0.6)
 ];
 
 musicOn = true;
 soundOn = true;
 
 // =======================================|
-tsh = 0; // thruster sprite shift counter |
+tssc = 0; // thruster sprite shift counter |
 // =======================================|
 
 function rotateShip(angle) {
@@ -162,13 +163,13 @@ function fire() {
         bullets.removeFrom(0);
     }
     sFire.play();
-    gunIsFiring = 25;
+    gunCooldown = 25;
 }
 
 function resetYaw() {
     curAngle = 15;
     sResetYaw.play();
-    sResetYaw.avaliable = false;
+    sResetYaw.available = false;
 }
 
 // ========|
@@ -200,15 +201,15 @@ function drawShip(context) {
     context.fill();
 
     // thrusters
-    tsh = tsh >= 2 ? 0 : tsh + 1;
+    tssc = tssc >= 2 ? 0 : tssc + 1;
 
     context.strokeStyle = colors["Red"];
     context.lineWidth = 20;
     context.beginPath();
 
-    context.moveTo(290 - tsh * 3, 400);
+    context.moveTo(290 - tssc * 3, 400);
     context.lineTo(300, 390);
-    context.lineTo(310 + tsh * 4, 400);
+    context.lineTo(310 + tssc * 4, 400);
     context.stroke();
 
 
@@ -216,9 +217,9 @@ function drawShip(context) {
     context.lineWidth = 12;
     context.beginPath();
 
-    context.moveTo(290 - tsh * 2, 400);
+    context.moveTo(290 - tssc * 2, 400);
     context.lineTo(300, 392);
-    context.lineTo(310 + tsh * 3, 400);
+    context.lineTo(310 + tssc * 3, 400);
     context.stroke();
 
 
@@ -226,9 +227,9 @@ function drawShip(context) {
     context.lineWidth = 9;
     context.beginPath();
 
-    context.moveTo(295 - tsh, 400);
+    context.moveTo(295 - tssc, 400);
     context.lineTo(300, 395);
-    context.lineTo(305 + tsh * 2, 400);
+    context.lineTo(305 + tssc * 2, 400);
     context.stroke();
 
     // body
@@ -410,7 +411,7 @@ function drawBullets(context) {
         context.fill();
 
         // drawing blasts from new bullets
-        if (gunIsFiring) {
+        if (gunCooldown) {
             x = currentGunIsLeft ? 385 : 215;
             y = 310;
 
@@ -426,7 +427,7 @@ function drawBullets(context) {
             context.closePath();
             context.stroke();
 
-            gunIsFiring--;
+            gunCooldown--;
         }
     }
 }
@@ -520,7 +521,7 @@ function update(timePassed, speed) {
         bullet[1] = ny;
     }
 
-    if (collisionCheck()) {
+    if (bulletHitTheEvil()) {
         replaceEvil();
         score++;
         sHit.play();
@@ -544,13 +545,14 @@ function rotate(cx, cy, x, y, angle) {
     return [nx, ny];
 }
 
-function collisionCheck() {
+function bulletHitTheEvil() {
     let bulletsArray = bullets.getAsArray();
     for (let i = 0; i < bulletsArray.length; i++) {
         let bullet = bulletsArray[i];
 
         // if bullet is between evil's left and right hitbox borders
         if (bullet[0] >= evil[0] - evilHitbox && bullet[0] <= evil[0] + evilHitbox) {
+            // same for top & bottom borders
             if (bullet[1] >= evil[1] - evilHitbox && bullet[1] <= evil[1] + evilHitbox) {
                 bullets.removeFrom(i);
                 return true;
@@ -625,6 +627,7 @@ window.onload = function () {
     btnDown = document.getElementById("button_down");
 
     document.getElementById("bg_theme").volume = 0.6;
+    document.getElementById("thruster_ambient").volume = 0.6;
 
     // initializing stars start positions
     for (let i = 0; i < stars.length; i++) {
@@ -669,7 +672,7 @@ window.addEventListener("keydown", function (e) {
         rotateShip(2);
         joystick.style.transform = 'rotate(2deg)';
         sJoystickPull.play();
-        sJoystickPull.avaliable = false;
+        sJoystickPull.available = false;
     }
     if (e.key === "ArrowUp") {
         e.preventDefault();
@@ -680,7 +683,7 @@ window.addEventListener("keydown", function (e) {
             fired = true;
             btnFire.style.transform = 'translateY(32%)';
             sButtonPush.play();
-            sButtonPush.avaliable = false;
+            sButtonPush.available = false;
         }
     }
     if (e.key === "ArrowLeft") {
@@ -688,14 +691,14 @@ window.addEventListener("keydown", function (e) {
         rotateShip(-2);
         joystick.style.transform = 'rotate(-2deg)';
         sJoystickPull.play();
-        sJoystickPull.avaliable = false;
+        sJoystickPull.available = false;
     }
     if (e.key === "ArrowDown") {
         e.preventDefault();
         resetYaw();
         btnDown.style.transform = 'translateY(32%)';
         sButtonPush.play();
-        sButtonPush.avaliable = false;
+        sButtonPush.available = false;
     }
 });
 
@@ -703,19 +706,19 @@ window.addEventListener("keyup", function (e) {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         joystick.style.transform = 'rotate(' + 0 + 'deg)';
         sJoystickRelease.play();
-        sJoystickPull.avaliable = true;
+        sJoystickPull.available = true;
     }
     if (e.key === "ArrowUp") {
         fired = false;
         btnFire.style.transform = 'translateY(0)';
         sButtonRelease.play();
-        sButtonPush.avaliable = true;
+        sButtonPush.available = true;
     }
     if (e.key === "ArrowDown") {
         e.preventDefault();
         btnDown.style.transform = 'translateY(0)';
         sButtonRelease.play();
-        sButtonPush.avaliable = true;
-        sResetYaw.avaliable = true;
+        sButtonPush.available = true;
+        sResetYaw.available = true;
     }
 });
