@@ -189,9 +189,9 @@ function resetYaw() {
 
 function drawStartHint(context) {
     context.font = "30px Arial";
-    context.fillStyle = colors["Red"];
+    context.fillStyle = colors.Red;
     context.fillText("Press fire (up)\nto start the game", 56, 204);
-    context.fillStyle = colors["Yellow"];
+    context.fillStyle = colors.Yellow;
     context.fillText("Press fire (up)\nto start the game", 50, 200);
 }
 
@@ -199,11 +199,11 @@ function drawShip(context) {
     // arm
     context.beginPath();
     context.rect(210, 340, 180, 25);
-    context.fillStyle = colors["DarkBlue"];
+    context.fillStyle = colors.DarkBlue;
     context.fill();
 
     //guns
-    context.fillStyle = colors["Yellow"];
+    context.fillStyle = colors.Yellow;
     // // left
     context.beginPath();
     context.rect(200, 330, 30, 45);
@@ -222,7 +222,7 @@ function drawShip(context) {
     // thrusters
     tssc = tssc >= 2 ? 0 : tssc + 1;
 
-    context.strokeStyle = colors["Red"];
+    context.strokeStyle = colors.Red;
     context.lineWidth = 20;
     context.beginPath();
 
@@ -232,7 +232,7 @@ function drawShip(context) {
     context.stroke();
 
 
-    context.strokeStyle = colors["Orange"];
+    context.strokeStyle = colors.Orange;
     context.lineWidth = 12;
     context.beginPath();
 
@@ -242,7 +242,7 @@ function drawShip(context) {
     context.stroke();
 
 
-    context.strokeStyle = colors["Yellow"];
+    context.strokeStyle = colors.Yellow;
     context.lineWidth = 9;
     context.beginPath();
 
@@ -254,7 +254,7 @@ function drawShip(context) {
     // body
     context.beginPath();
     context.rect(260, 320, 80, 65);
-    context.fillStyle = colors["Blue"];
+    context.fillStyle = colors.Blue;
     context.fill();
     context.beginPath();
     context.rect(275, 310, 50, 10);
@@ -264,16 +264,16 @@ function drawShip(context) {
     context.fill();
     context.beginPath();
     context.arc(300, 265, 17, 0, 2 * Math.PI);
-    context.fillStyle = colors["Red"];
+    context.fillStyle = colors.Red;
     context.fill();
 
     // body window
     context.beginPath();
     context.rect(275, 330, 50, 15);
-    context.fillStyle = colors["LightBlue"];
+    context.fillStyle = colors.LightBlue;
     context.fill();
     // // glass glare
-    context.strokeStyle = colors["White"];
+    context.strokeStyle = colors.White;
     context.lineWidth = 1;
     // // // upper
     context.beginPath();
@@ -307,14 +307,14 @@ function drawArrow(context) {
 
     [nx, ny] = rotate(cx, cy, x, y, -(curAngle - 15) * 2);
 
-    context.fillStyle = colors["PurpleGray"];
+    context.fillStyle = colors.PurpleGray;
     context.beginPath();
 
     context.rect(520, 320, 80, 80);
     context.fill();
 
 
-    context.strokeStyle = colors["Red"];
+    context.strokeStyle = colors.Red;
     context.lineWidth = 5;
     context.beginPath();
 
@@ -329,7 +329,7 @@ function drawArrow(context) {
 }
 
 function drawStars(context) {
-    context.fillStyle = colors["White"];
+    context.fillStyle = colors.White;
     for (let i = 0; i < stars.length; i++) {
         star = stars[i];
 
@@ -346,14 +346,14 @@ function drawStars(context) {
 function drawEvil(context) {
     x = evil[0];
     y = evil[1];
-    context.fillStyle = colors["Purple"];
+    context.fillStyle = colors.Purple;
 
     // body
     context.beginPath();
     context.arc(x, y, 30, 0, 2 * Math.PI);
     context.fill();
 
-    context.fillStyle = colors["Black"];
+    context.fillStyle = colors.Black;
 
     // left eyehole
     context.beginPath();
@@ -373,7 +373,7 @@ function drawEvil(context) {
     context.closePath();
     context.fill();
 
-    context.fillStyle = colors["Red"];
+    context.fillStyle = colors.Red;
 
     // left eyeball
     context.beginPath();
@@ -385,7 +385,7 @@ function drawEvil(context) {
     context.arc(x + 10, y - 9, 6, 0, 2 * Math.PI);
     context.fill();
 
-    context.fillStyle = colors["White"];
+    context.fillStyle = colors.White;
 
     // mouth
     context.beginPath();
@@ -399,7 +399,7 @@ function drawEvil(context) {
     context.closePath();
     context.fill();
 
-    context.strokeStyle = colors["Black"];
+    context.strokeStyle = colors.Black;
     context.lineWidth = 1;
 
     // teeth
@@ -419,7 +419,7 @@ function drawEvil(context) {
 }
 
 function drawBullets(context) {
-    context.fillStyle = colors["Orange"];
+    context.fillStyle = colors.Orange;
     let bulletsArray = bullets.getAsArray();
     for (let i = 0; i < bulletsArray.length; i++) {
         let bullet = bulletsArray[i];
@@ -434,7 +434,7 @@ function drawBullets(context) {
             x = currentGunIsLeft ? 385 : 215;
             y = 310;
 
-            context.strokeStyle = colors["Red"];
+            context.strokeStyle = colors.Red;
             context.lineWidth = 10;
 
             context.beginPath();
@@ -453,7 +453,7 @@ function drawBullets(context) {
 
 function drawScore(context) {
     let msg = "SCORE: " + score;
-    context.fillStyle = score > 0 ? colors["White"] : colors["Red"];
+    context.fillStyle = score > 0 ? colors.White : colors.Red;
     context.font = "20px Arial";
     context.fillText(msg, 20, 30);
 }
